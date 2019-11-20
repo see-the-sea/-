@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import Proptypes from 'prop-types';
 
 export default class TodoItem extends Component {
 
@@ -12,9 +13,20 @@ export default class TodoItem extends Component {
         handleBtnDelete(index)
     }
     render(){
-        const {content} =this.props;
+        const {content,test} =this.props;
         return(
-            <div onClick={this.handleClick}>{content}</div>
+            <div onClick={this.handleClick}>
+                {test}-{content}
+            </div>
         )
     }
+}
+TodoItem.propTypes = {
+    test: Proptypes.string.isRequired,
+    content: Proptypes.oneOfType([Proptypes.string,Proptypes.number]),
+    handleBtnDelete: Proptypes.func,
+    index: Proptypes.number,
+}
+TodoItem.defaultProps = {
+    test: 'hello'
 }
