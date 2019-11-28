@@ -1,7 +1,7 @@
 import React,{Component, Fragment} from 'react';
 import './Todo.css';
 import TodoItem from './TodoItem';
-// import axios from 'axios';
+import axios from 'axios';
 
 export default class TodoList extends Component {
     constructor(props){
@@ -15,17 +15,17 @@ export default class TodoList extends Component {
         this.handleBtnClick=this.handleBtnClick.bind(this);
         this.handleBtnDelete=this.handleBtnDelete.bind(this);
     }
-    // componentDidMount(){
-    //     axios.get('/api/todolist')
-    //         .then((res)=>{
-    //             console.log(res.data)
-    //             this.setState(()=>({
-    //                     list:[...res.data]
-    //                 })
-    //             )
-    //         })
-    //         .catch(()=>{alert('error')})
-    // }
+    componentDidMount(){
+        axios.get('/todolist.json')
+            .then((res)=>{
+                console.log(res.data)
+                this.setState(()=>({
+                        list:[...res.data]
+                    })
+                )
+            })
+            .catch(()=>{alert('error')})
+    }
     getTodoItem(){
         return this.state.list.map((item,index)=>{
             return(
