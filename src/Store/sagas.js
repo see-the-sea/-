@@ -1,4 +1,4 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import {  put, takeEvery } from 'redux-saga/effects';
 import {GET_INIT_LIST} from './actionTypes';
 import {initListAction} from './actionCreators';
 import axios from 'axios';
